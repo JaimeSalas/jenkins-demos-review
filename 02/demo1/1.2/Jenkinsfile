@@ -1,0 +1,22 @@
+pipeline {
+    agent {
+        dockerfile {
+            dir '02'
+        }
+    }
+    stages {
+        stage('Verify') {
+            steps {
+                sh'''
+                    dotnet --list-sdks
+                    dotnet --list-runtimes
+                '''
+            }
+        }
+        stage('Smoke Test') {
+            steps {
+                sh 'docker run jaimesalas/jenkins-pipeline-demos:0.0.1'
+            }
+        }
+    }
+}
