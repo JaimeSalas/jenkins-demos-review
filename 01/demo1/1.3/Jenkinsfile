@@ -51,7 +51,7 @@ pipeline {
     }
 }
 
-String getVersionSuffix {
+String getVersionSuffix() {
     if (params.RC) {
         return env.VERSION_RC
     } else {
@@ -59,7 +59,7 @@ String getVersionSuffix {
     }
 }
 
-void auditTools {
+void auditTools() {
     sh '''
         git version
         docker version
