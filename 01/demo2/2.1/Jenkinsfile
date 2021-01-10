@@ -1,0 +1,12 @@
+// https://github.com/JaimeSalas/jenkins-library-review.git
+library identifier: 'jenkins-library-review@master',
+        retriever: modernSCM([$class: 'GitSCMSource', remote: 'https://github.com/JaimeSalas/jenkins-library-review.git'])
+
+pipeline {
+    agent any
+    stages {
+        stage('Audit tools') {
+            auditTools()
+        }
+    }
+}
